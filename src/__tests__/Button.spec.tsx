@@ -1,7 +1,7 @@
 import { screen, render, fireEvent } from "@testing-library/react";
 
 import { COLORS } from "../utils";
-import Button from "./Button";
+import Button from "../Button";
 
 test("should render button component", () => {
   render(<Button variant="primary">Button</Button>);
@@ -56,4 +56,22 @@ test("should render disabled button", () => {
 
   fireEvent.click(button);
   expect(mockedOnClick).toHaveBeenCalledTimes(0);
+});
+
+test("should render primary button if variant was undefined", () => {
+  render(<Button>Texto</Button>);
+
+  const button = screen.getByRole("button");
+
+  expect(button).toBeInTheDocument();
+  expect(button).toHaveStyle(`background-color: ${COLORS.GREEN_600}`);
+  expect(button).toHaveStyle(`color: ${COLORS.WHITE}`);
+});
+
+test("should test rounded button", () => {
+  render(<Button rounded>Texto</Button>);
+
+  const button = screen.getByRole("button");
+
+  expect(button).toHaveStyle(`border-radius: 16px`);
 });
