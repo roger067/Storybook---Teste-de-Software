@@ -12,9 +12,9 @@ interface CardProps {
 const Card = styled(Flex)<CardProps>`
   border-radius: ${({ borderRadius }) => borderRadius || "8px"};
   box-shadow: ${({ boxShadow }) =>
-    boxShadow || "0px 1.4px 2.3px rgb(0 0 0 / 2%)"};
+    boxShadow || "0px 3px 6px rgba(0, 0, 0, 0.349)"};
   background-color: ${({ backgroundColor }) => backgroundColor || COLORS.WHITE};
-  padding: ${({ padding }) => padding?.toString() || "8px"};
+  padding: ${({ padding }) => padding?.toString() || "16px"};
 `;
 
 export default Card;
