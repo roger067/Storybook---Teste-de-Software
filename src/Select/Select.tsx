@@ -87,6 +87,7 @@ const Select: React.FC<SelectProps> = ({
 
 const SelectGroup = styled.div<{ hasError?: boolean }>`
   position: relative;
+  margin-bottom: 24px;
 
   label {
     display: block;
@@ -144,6 +145,7 @@ const SelectTag = styled.button<{ hasError?: boolean }>`
 `;
 
 const Dropdown = styled.ul`
+  z-index: 10;
   box-sizing: border-box;
   position: absolute;
   width: 100%;

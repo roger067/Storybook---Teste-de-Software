@@ -27,6 +27,7 @@ const Input: React.FC<InputProps> = ({
 const InputGroup = styled.div<{ hasError?: boolean }>`
   width: 100%;
   position: relative;
+  margin-bottom: 24px;
 
   input {
     box-sizing: border-box;

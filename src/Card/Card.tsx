@@ -11,6 +11,7 @@ interface CardProps {
 }
 
 const Card = styled(Flex)<CardProps>`
+  box-sizing: border-box;
   border-radius: ${({ borderRadius }) => borderRadius || "8px"};
   box-shadow: ${({ boxShadow }) => boxShadow || "0 0 5px #ccc"};
   background-color: ${({ backgroundColor }) => backgroundColor || COLORS.WHITE};
