@@ -7,14 +7,15 @@ interface CardProps {
   borderRadius?: string;
   boxShadow?: string;
   backgroundColor?: string;
+  color?: string;
 }
 
 const Card = styled(Flex)<CardProps>`
   border-radius: ${({ borderRadius }) => borderRadius || "8px"};
-  box-shadow: ${({ boxShadow }) =>
-    boxShadow || "0px 3px 6px rgba(0, 0, 0, 0.349)"};
+  box-shadow: ${({ boxShadow }) => boxShadow || "0 0 5px #ccc"};
   background-color: ${({ backgroundColor }) => backgroundColor || COLORS.WHITE};
   padding: ${({ padding }) => padding?.toString() || "16px"};
+  color: ${({ color }) => color || COLORS.GREY_700};
 `;
 
 export default Card;
