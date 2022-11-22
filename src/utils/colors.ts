@@ -9,4 +9,5 @@ export const GREY_600 = "#8d95a7";
 export const GREY_700 = "#3C3C3C";
 export const RED_300 = "#fde7e7";
 export const RED_500 = "#EB5757";
+export const RED_700 = "#c42f2f";
 export const WHITE = "#FFF";
