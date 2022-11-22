@@ -23,6 +23,7 @@
         "start": "start-storybook -p 6006 -s public",
         "build": "build-storybook -s public",
         "test": "react-scripts test",
+        "test:coverage": "react-scripts test --watchAll --coverage",
         "eject": "react-scripts eject",
         "storybook": "start-storybook -p 6006 -s public",
         "build-storybook": "build-storybook -s public"
@@ -69,5 +70,13 @@
         "babel-plugin-named-exports-order": "^0.0.2",
         "prop-types": "^15.8.1",
         "webpack": "^5.75.0"
+    },
+    "jest": {
+        "coveragePathIgnorePatterns": [
+            "stories.tsx"
+        ],
+        "collectCoverageFrom": [
+            "src/**/*.{ts,tsx}"
+        ]
     }
 }

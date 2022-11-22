@@ -1,7 +1,7 @@
 import { screen, render, fireEvent } from "@testing-library/react";
 
 import { COLORS } from "../utils";
-import Button from "../Button";
+import Button from "./Button";
 
 test("should render button component", () => {
   render(<Button variant="primary">Button</Button>);

@@ -1,9 +1,9 @@
 import { CheckCircle, XCircle } from "@styled-icons/bootstrap";
 import styled from "styled-components";
-import Flex from "./Flex";
-import Text from "./Text";
+import Flex from "../Flex/Flex";
+import Text from "../Text/Text";
 
-import { COLORS } from "./utils";
+import { COLORS } from "../utils";
 
 interface AlertProps {
   text: string;

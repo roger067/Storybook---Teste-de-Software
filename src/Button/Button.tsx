@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { COLORS } from "./utils";
+import { COLORS } from "../utils";
 
 interface ButtonProps {
   variant?: "primary" | "secondary";

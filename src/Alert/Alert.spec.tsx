@@ -1,7 +1,7 @@
 import { screen, render } from "@testing-library/react";
 
 import { COLORS } from "../utils";
-import Alert from "../Alert";
+import Alert from "./Alert";
 
 test("should render alert component", () => {
   render(<Alert text="Alert component" state="success" />);
