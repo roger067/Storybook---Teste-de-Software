@@ -37,7 +37,7 @@ const InputGroup = styled.div<{ hasError?: boolean }>`
     border: ${({ hasError }) =>
       hasError
         ? `1px solid ${COLORS.RED_500}`
-        : `1px solid ${COLORS.GREY_600}`};
+        : `1px solid ${COLORS.GREY_400}`};
     border-radius: 4px;
     outline: none;
     background: transparent;
@@ -55,7 +55,7 @@ const InputGroup = styled.div<{ hasError?: boolean }>`
   label {
     display: block;
     font-size: 12px;
-    color: ${COLORS.GREY_600};
+    color: ${COLORS.GREY_700};
     margin-bottom: 8px;
   }
 

@@ -62,7 +62,7 @@ const Select: React.FC<SelectProps> = ({
         type="button"
         className={isDropdownOpen ? "selected" : ""}
       >
-        <Text fontSize="14px" color={COLORS.GREY_700}>
+        <Text fontSize="14px" color={COLORS.GREY_600}>
           {selectedValue}
         </Text>
         <ChevronDown size={16} color={COLORS.GREEN_500} />
@@ -91,7 +91,7 @@ const SelectGroup = styled.div<{ hasError?: boolean }>`
   label {
     display: block;
     font-size: 12px;
-    color: ${COLORS.GREY_600};
+    color: ${COLORS.GREY_700};
     margin-bottom: 8px;
   }
 
@@ -118,12 +118,20 @@ const SelectTag = styled.button<{ hasError?: boolean }>`
   border: none;
   outline: none;
   cursor: pointer;
-  transition: border-bottom 300ms;
+  transition: border 300ms;
 
   padding: 12px;
   border-radius: 4px;
   border: ${({ hasError }) =>
     hasError ? `1px solid ${COLORS.RED_500}` : `1px solid ${COLORS.GREY_400}`};
+
+  &:focus,
+  &:active {
+    border: ${({ hasError }) =>
+      hasError
+        ? `1px solid ${COLORS.RED_700}`
+        : `1px solid ${COLORS.GREEN_500}`};
+  }
 
   svg {
     transition: transform 300ms;
