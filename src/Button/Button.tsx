@@ -38,7 +38,7 @@ const Button = styled.button<ButtonProps>`
   ${({ variant }) => buttonStyle[variant || "primary"]};
   border-radius: ${({ rounded }) => (rounded ? "16px" : "4px")};
   font-size: 14px;
-  padding: 8px 16px;
+  padding: 12px 16px;
   cursor: pointer;
   transition: all 250ms;
 

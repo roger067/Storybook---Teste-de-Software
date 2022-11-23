@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Alert from "../Alert/Alert";
 
 import Button from "../Button/Button";
 import Card from "../Card/Card";
@@ -7,14 +8,37 @@ import Input from "../Input/Input";
 import Select from "../Select/Select";
 import Steps, { Step } from "../Step/Step";
 import Text from "../Text/Text";
+import { COLORS } from "../utils";
+
+type FormKeys = "name" | "role" | "email";
 
 const Page = () => {
-  const [value, setValue] = useState("");
+  const [selectedStep, setSelectedStep] = useState("register");
+  const [registerForm, setRegisterForm] = useState({
+    name: {
+      value: "",
+      errorMessage: "",
+    },
+    role: {
+      value: "",
+      errorMessage: "",
+    },
+    email: {
+      value: "",
+      errorMessage: "",
+    },
+  });
 
   const steps: Step[] = [
     { status: "finished", title: "Passo 1" },
-    { status: "default", title: "Passo 2" },
-    { status: "default", title: "Passo 3" },
+    {
+      status: selectedStep === "register" ? "default" : "finished",
+      title: "Cadastrar",
+    },
+    {
+      status: selectedStep === "confirm" ? "finished" : "default",
+      title: "Confirmação",
+    },
   ];
 
   const itens = [
@@ -22,22 +46,71 @@ const Page = () => {
     { label: "Item 2", value: "2" },
   ];
 
+  const handleFieldChange = (value: string, name: FormKeys) => {
+    setRegisterForm((prevState) => ({
+      ...prevState,
+      [name]: { value, hasError: false },
+    }));
+  };
+
+  const getEmptyFields = () => {
+    return !!Object.values(registerForm).filter((form) => form.value === "")
+      .length;
+  };
+
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    setSelectedStep("confirm");
+  };
+
   return (
     <Flex alignItems="center" justifyContent="center" flexDirection="column">
       <Steps steps={steps} />
-      <Card flexDirection="column" mt="24px" style={{ minWidth: "352px" }}>
-        <Text mb="16px">Lorem ipsum</Text>
-        <Input label="Campo 1" name="a" />
-        <Select
-          label="Campo 2"
-          name="b"
-          value={value}
-          onChange={(e) => setValue(e)}
-          itens={itens}
-        />
-        <Input label="Campo 3" name="c" />
-        <Button>Avançar</Button>
-      </Card>
+      {selectedStep === "register" && (
+        <Card flexDirection="column" mt="24px" style={{ minWidth: "352px" }}>
+          <Text
+            mb="16px"
+            color={COLORS.GREY_700}
+            fontSize="20px"
+            fontWeight="700"
+          >
+            Registrar funcionário
+          </Text>
+          <form onSubmit={onSubmit}>
+            <Input
+              label="Nome"
+              name="name"
+              value={registerForm.name.value}
+              onChange={(e) => handleFieldChange(e.target.value, "name")}
+            />
+            <Select
+              label="Cargo"
+              name="role"
+              value={registerForm.role.value}
+              onChange={(e) => handleFieldChange(e, "role")}
+              itens={itens}
+            />
+            <Input
+              label="E-mail"
+              name="email"
+              value={registerForm.email.value}
+              onChange={(e) => handleFieldChange(e.target.value, "email")}
+            />
+            <Button style={{ width: "100%" }} disabled={getEmptyFields()}>
+              Finalizar
+            </Button>
+          </form>
+        </Card>
+      )}
+      {selectedStep === "confirm" && (
+        <Flex mt="24px" flexDirection="column">
+          <Alert state="success" text="Cadastro realizado com sucesso" />
+          <Text mt="16px">Nome: {registerForm.name.value}</Text>
+          <Text mt="16px">Cargo: {registerForm.role.value}</Text>
+          <Text mt="16px">E-mail: {registerForm.email.value}</Text>
+        </Flex>
+      )}
     </Flex>
   );
 };
