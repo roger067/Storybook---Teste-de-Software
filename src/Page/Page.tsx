@@ -42,8 +42,9 @@ const Page = () => {
   ];
 
   const itens = [
-    { label: "Item 1", value: "1" },
-    { label: "Item 2", value: "2" },
+    { label: "Professor", value: "Professor" },
+    { label: "Aluno", value: "Aluno" },
+    { label: "Monitor", value: "Monitor" },
   ];
 
   const handleFieldChange = (value: string, name: FormKeys) => {
